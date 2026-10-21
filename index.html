@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ดาวน์โหลด SuperAi &amp; RAKKYXD</title>
+<meta name="description" content="AI ทุกตัวของคุณ ในหน้าต่างเดียว: Claude, ChatGPT (Codex), Antigravity, OpenCode และ Freebuff บน Windows และ macOS">
+<meta property="og:title" content="SuperAi &amp; RAKKYXD">
+<meta property="og:description" content="AI ทุกตัวของคุณ ในหน้าต่างเดียว ดาวน์โหลดฟรีสำหรับ Windows และ macOS">
+<meta property="og:image" content="https://rakgoorak.github.io/SuperAi-RAKKYXD-releases/images/workspace.png">
+<link rel="icon" href="images/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --base: #0c1116;
+    --surface: #10181f;
+    --raised: #152029;
+    --border: #1e2d38;
+    --text: #e6edf3;
+    --dim: #a0afbd;
+    --accent: #74b3fb;
+    --brand-gradient: linear-gradient(105deg, #30f457 0%, #00c2a6 52%, #1a8cff 100%);
+    --on-brand: #04140f;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--base);
+    color: var(--text);
+    font: 16px/1.7 "Noto Sans Thai", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 48px 16px 64px; }
+  header { text-align: center; }
+  header img.icon { width: 96px; height: 96px; }
+  h1 { margin: 12px 0 4px; font-size: clamp(28px, 6vw, 40px); line-height: 1.3; }
+  .tagline { margin: 0; font-size: 18px; font-weight: 500; }
+  .sub { margin: 4px 0 0; color: var(--dim); }
+
+  .primary { margin: 32px auto 0; max-width: 520px; text-align: center; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 52px; padding: 12px 28px; border-radius: 12px;
+    font: inherit; font-weight: 700; font-size: 18px; text-decoration: none;
+    background: var(--brand-gradient); color: var(--on-brand);
+    box-shadow: 0 6px 24px rgba(0, 194, 166, .25);
+    width: 100%;
+  }
+  .btn:hover { filter: brightness(1.06); }
+  .btn:focus-visible, .choice:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .btn svg { flex: none; }
+  .meta { margin: 10px 0 0; color: var(--dim); font-size: 14px; }
+  .hint { margin: 12px 0 0; color: var(--dim); font-size: 14px; }
+
+  .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 40px; }
+  .choice {
+    display: block; padding: 16px 18px; border-radius: 12px; text-decoration: none; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border);
+  }
+  .choice:hover { background: var(--raised); }
+  .choice.recommended { border-color: #00c2a6; }
+  .choice b { display: block; font-size: 16px; }
+  .choice > span { display: block; color: var(--dim); font-size: 14px; }
+  .choice .badge {
+    display: inline-block; margin-top: 6px; padding: 0 8px; border-radius: 999px;
+    background: rgba(0, 194, 166, .15); color: #8bd2b2; font-size: 12px;
+  }
+  .others { margin-top: 12px; text-align: center; font-size: 14px; color: var(--dim); }
+
+  .shot { margin: 48px 0 0; }
+  .shot img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); }
+
+  section { margin-top: 48px; }
+  h2 { font-size: 22px; margin: 0 0 12px; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .card { padding: 18px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p, .card ol { margin: 0; color: var(--dim); font-size: 15px; }
+  .card ol { padding-left: 20px; }
+  .note { margin-top: 10px; font-size: 14px; color: var(--dim); }
+  kbd { font: inherit; padding: 0 6px; border-radius: 6px; background: var(--raised); border: 1px solid var(--border); color: var(--text); white-space: nowrap; }
+
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--dim); font-size: 14px; text-align: center; }
+  footer a { margin: 0 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="icon" src="images/app-icon.png" alt="" width="96" height="96">
+    <h1>SuperAi &amp; RAKKYXD</h1>
+    <p class="tagline">AI ทุกตัวของคุณ ในหน้าต่างเดียว</p>
+    <p class="sub">Claude · ChatGPT (Codex) · Antigravity · OpenCode · Freebuff<br>Windows และ macOS · ภาษาไทย · ใช้บัญชี AI ของคุณเอง</p>
+  </header>
+
+  <div class="primary">
+    <a id="primary" class="btn" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+      <span id="primary-label">ดาวน์โหลด</span>
+    </a>
+    <p class="meta" id="meta">เวอร์ชันล่าสุด · ฟรี · ไม่ต้องล็อกอิน</p>
+    <p class="hint" id="hint" hidden></p>
+  </div>
+
+  <div class="choices" id="choices">
+    <a class="choice" data-os="windows" data-asset="SuperAi-RAKKYXD-Setup.exe" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-Setup.exe">
+      <b>Windows 10/11</b><span>ตัวติดตั้ง (.exe) · <span class="size" data-fallback="≈90 MB"></span></span>
+    </a>
+    <a class="choice" data-os="mac-arm" data-asset="SuperAi-RAKKYXD-macos-arm64.dmg" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-arm64.dmg">
+      <b>Mac Apple Silicon</b><span>ชิป M1 ขึ้นไป (.dmg) · <span class="size" data-fallback="≈110 MB"></span></span>
+    </a>
+    <a class="choice" data-os="mac-intel" data-asset="SuperAi-RAKKYXD-macos-x64.dmg" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-x64.dmg">
+      <b>Mac Intel</b><span>ชิป Intel (.dmg) · <span class="size" data-fallback="≈115 MB"></span></span>
+    </a>
+  </div>
+  <p class="others">
+    ไม่อยากติดตั้ง? ใช้ไฟล์ ZIP แบบ portable:
+    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-windows-x64.zip">Windows</a> ·
+    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-arm64.zip">Mac Apple Silicon</a> ·
+    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-x64.zip">Mac Intel</a>
+    <br><a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases">ทุกเวอร์ชันและสิ่งที่เปลี่ยน</a>
+  </p>
+
+  <figure class="shot">
+    <img src="images/workspace.png" alt="หน้าหลักของ SuperAi & RAKKYXD" loading="lazy">
+  </figure>
+
+  <section>
+    <h2>ติดตั้งใน 1 นาที</h2>
+    <div class="steps">
+      <div class="card">
+        <h3>Windows</h3>
+        <ol>
+          <li>ดับเบิลคลิก <b>SuperAi-RAKKYXD-Setup.exe</b></li>
+          <li>เลือกโฟลเดอร์ แล้วกด <b>ติดตั้ง</b></li>
+        </ol>
+        <p class="note">ถ้าขึ้น “Windows protected your PC” ให้กด <kbd>More info</kbd> แล้ว <kbd>Run anyway</kbd></p>
+      </div>
+      <div class="card">
+        <h3>macOS 11 ขึ้นไป</h3>
+        <ol>
+          <li>เปิดไฟล์ <b>.dmg</b></li>
+          <li>ลากแอปไปที่ <b>Applications</b></li>
+        </ol>
+        <p class="note">ถ้าเปิดครั้งแรกไม่ได้ ไปที่ System Settings → Privacy &amp; Security แล้วกด <kbd>Open Anyway</kbd></p>
+      </div>
+      <div class="card">
+        <h3>เปิดโปรแกรมครั้งแรก</h3>
+        <p>หน้า <b>เริ่มต้นใช้งาน</b> จะติดตั้ง Node.js, Git และ CLI ของ AI ให้ทีละขั้น แล้วให้คุณเข้าสู่ระบบด้วยบัญชีของตัวเอง ไม่ต้องเตรียมอะไรมาก่อน</p>
+      </div>
+    </div>
+    <p class="note">ไม่รู้ว่า Mac เป็นชิปอะไร? กดโลโก้ Apple มุมซ้ายบนของจอ → <b>About This Mac</b> ถ้าเห็น “Chip: Apple M…” ให้เลือก Apple Silicon ถ้าเห็น “Processor: Intel” ให้เลือก Intel</p>
+  </section>
+
+  <footer>
+    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases#readme">คู่มือและแก้ปัญหา</a>
+    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/issues/new/choose">แจ้งปัญหา / เสนอความสามารถ</a>
+    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases">Releases</a>
+    <p>โปรแกรมทำงานบนเครื่องคุณ ไม่มีเซิร์ฟเวอร์ของตัวเอง ค่าใช้จ่ายและโควตาเป็นไปตามบัญชี AI ของคุณ</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var LABELS = {
+    windows: "ดาวน์โหลดสำหรับ Windows",
+    "mac-arm": "ดาวน์โหลดสำหรับ Mac (Apple Silicon)",
+    "mac-intel": "ดาวน์โหลดสำหรับ Mac (Intel)"
+  };
+  var choices = {};
+  document.querySelectorAll(".choice").forEach(function (a) { choices[a.dataset.os] = a; });
+  var primary = document.getElementById("primary");
+  var label = document.getElementById("primary-label");
+  var hint = document.getElementById("hint");
+
+  function pick(os, unsure) {
+    var c = choices[os];
+    if (!c) return;
+    primary.href = c.href;
+    label.textContent = LABELS[os];
+    Object.keys(choices).forEach(function (k) { choices[k].classList.remove("recommended"); });
+    c.classList.add("recommended");
+    if (!c.querySelector(".badge")) {
+      var b = document.createElement("span");
+      b.className = "badge";
+      b.textContent = "ตรงกับเครื่องนี้";
+      c.appendChild(b);
+    }
+    if (unsure) {
+      hint.hidden = false;
+      hint.textContent = "ถ้า Mac ของคุณเป็นชิป Intel ให้เลือก Mac Intel ด้านล่าง";
+    }
+  }
+
+  // Guess the Mac CPU: Chromium exposes it directly; elsewhere the GPU name ("Apple M1" vs "Intel") is a strong hint.
+  function macArch() {
+    var uad = navigator.userAgentData;
+    if (uad && uad.getHighEntropyValues) {
+      return uad.getHighEntropyValues(["architecture"]).then(function (v) {
+        return v.architecture === "arm" ? "arm" : v.architecture === "x86" ? "intel" : gpuGuess();
+      }, gpuGuess);
+    }
+    return Promise.resolve(gpuGuess());
+  }
+  function gpuGuess() {
+    try {
+      var gl = document.createElement("canvas").getContext("webgl");
+      var ext = gl && gl.getExtension("WEBGL_debug_renderer_info");
+      var r = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : "";
+      if (/apple m\d|apple gpu/i.test(r)) return "arm";
+      if (/intel|amd|radeon/i.test(r)) return "intel";
+    } catch (e) {}
+    return "";
+  }
+
+  var ua = navigator.userAgent;
+  var platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || "";
+  if (/win/i.test(platform) || /Windows NT/.test(ua)) {
+    pick("windows");
+  } else if (/mac/i.test(platform) || /Macintosh/.test(ua)) {
+    pick("mac-arm", true);
+    macArch().then(function (arch) {
+      if (arch === "intel") { pick("mac-intel"); hint.hidden = true; }
+      else if (arch === "arm") { hint.hidden = true; }
+    });
+  } else {
+    label.textContent = "เลือกเครื่องของคุณด้านล่าง";
+    primary.href = "#choices";
+    hint.hidden = false;
+    hint.textContent = "โปรแกรมนี้ใช้บน Windows และ macOS เปิดหน้านี้จากคอมพิวเตอร์ที่จะติดตั้ง";
+  }
+
+  // Version, date and real file sizes from the latest release (the page still works if this fails).
+  var sizes = document.querySelectorAll(".size");
+  sizes.forEach(function (s) { s.textContent = s.dataset.fallback; });
+  fetch("https://api.github.com/repos/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest")
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+    .then(function (rel) {
+      var byName = {};
+      (rel.assets || []).forEach(function (a) { byName[a.name] = a; });
+      document.querySelectorAll(".choice").forEach(function (c) {
+        var a = byName[c.dataset.asset];
+        if (a) c.querySelector(".size").textContent = Math.round(a.size / 1048576) + " MB";
+      });
+      var date = rel.published_at ? new Date(rel.published_at).toLocaleDateString("th-TH", { day: "numeric", month: "long", year: "numeric" }) : "";
+      document.getElementById("meta").textContent =
+        "เวอร์ชัน " + String(rel.tag_name || "").replace(/^v/, "") + (date ? " · " + date : "") + " · ฟรี · ไม่ต้องล็อกอิน";
+    })
+    .catch(function () {});
+})();
+</script>
+</body>
+</html>

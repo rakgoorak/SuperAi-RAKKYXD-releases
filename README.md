@@ -33,6 +33,7 @@
 | Mac Intel | [SuperAi-RAKKYXD-macos-x64.dmg](https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-x64.dmg) | ≈115 MB |
 
 - ลิงก์ด้านบนเป็นเวอร์ชันล่าสุดเสมอ ไม่ต้องล็อกอิน GitHub
+- หรือเปิด [หน้าดาวน์โหลด](https://rakgoorak.github.io/SuperAi-RAKKYXD-releases/) ที่เลือกไฟล์ให้ตรงกับเครื่องของคุณ
 - ดูทุกเวอร์ชันและสิ่งที่เปลี่ยนในแต่ละรุ่นได้ที่ [Releases](https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases)
 - ไม่อยากติดตั้ง? ใช้ไฟล์ ZIP (portable) ในหน้า Releases: แตกทั้งโฟลเดอร์แล้วเปิดได้เลย
 
@@ -140,3 +141,7 @@ shasum -a 256 SuperAi-RAKKYXD-macos-arm64.dmg
 ```
 
 แล้วเทียบกับตัวเลขในไฟล์ `.sha256` ของรุ่นนั้น
+
+## แจ้งปัญหาหรือเสนอความสามารถ
+
+เปิด [แจ้งปัญหา / เสนอความสามารถ](https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/issues/new/choose) แล้วเลือกแบบฟอร์ม กรอกเป็นภาษาไทยได้เลย อย่าใส่รหัสผ่าน API key หรือข้อมูลส่วนตัว เพราะทุกคนเห็นได้

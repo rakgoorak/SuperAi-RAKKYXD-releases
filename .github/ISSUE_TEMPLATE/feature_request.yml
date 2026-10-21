@@ -1,0 +1,36 @@
+name: เสนอความสามารถใหม่
+description: อยากให้โปรแกรมทำอะไรได้เพิ่ม หรือปรับให้ใช้ง่ายขึ้น
+title: "[ข้อเสนอ] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: อยากให้ช่วยเรื่องอะไร
+      description: ตอนนี้ติดตรงไหน หรือทำอะไรแล้วไม่สะดวก
+      placeholder: เช่น ทุกครั้งที่เปิดโปรแกรมต้องเลือก model ใหม่ ...
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: อยากให้เป็นแบบไหน
+      description: เล่าสิ่งที่อยากได้ ถ้ามีตัวอย่างจากโปรแกรมอื่นก็ใส่มาได้
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: เกี่ยวกับส่วนไหน
+      multiple: true
+      options:
+        - Agent
+        - Code
+        - Chat
+        - Usage
+        - การติดตั้ง / อัปเดต
+        - พูดเพื่อพิมพ์
+        - แนบรูป / PDF
+        - Browser Preview
+        - AI ตัวใหม่ที่อยากให้รองรับ
+        - อื่นๆ

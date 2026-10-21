@@ -1,0 +1,92 @@
+name: แจ้งปัญหา
+description: โปรแกรมทำงานผิดพลาด ปิดเอง หรือไม่เป็นอย่างที่ควร
+title: "[ปัญหา] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ขอบคุณที่แจ้งปัญหา ก่อนส่งลองดูตาราง [แก้ปัญหาที่พบบ่อย](https://github.com/rakgoorak/SuperAi-RAKKYXD-releases#แก้ปัญหาที่พบบ่อย) ก่อน อาจมีวิธีแก้อยู่แล้ว
+
+        ⚠️ **ห้ามใส่รหัสผ่าน API key token หรือข้อมูลส่วนตัว** ลงในหน้านี้ เพราะทุกคนเห็นได้
+  - type: textarea
+    id: what
+    attributes:
+      label: เกิดอะไรขึ้น
+      description: เล่าสิ่งที่เห็น และสิ่งที่คิดว่าควรจะเกิดแทน
+      placeholder: เช่น กดส่งในโหมด Chat แล้วขึ้นข้อความผิดพลาดว่า ...
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: ทำอย่างไรถึงเกิดปัญหา
+      description: บอกทีละขั้นเพื่อให้ทำซ้ำได้
+      placeholder: |
+        1. เปิดโหมด Agent
+        2. เลือก Main เป็น Claude
+        3. กดส่ง ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: เวอร์ชันของโปรแกรม
+      description: ดูได้ที่ปุ่ม **อัปเดตโปรแกรม** ที่แถบซ้าย
+      placeholder: เช่น 1.0.1
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: เครื่องที่ใช้
+      options:
+        - Windows 11
+        - Windows 10
+        - Mac Apple Silicon (M1 ขึ้นไป)
+        - Mac Intel
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: เกิดในส่วนไหน
+      multiple: true
+      options:
+        - ติดตั้ง / เปิดโปรแกรม
+        - หน้าเริ่มต้นใช้งาน
+        - Agent
+        - Code
+        - Chat
+        - Usage
+        - อัปเดตโปรแกรม
+        - พูดเพื่อพิมพ์
+        - แนบรูป / PDF
+        - Browser Preview
+        - อื่นๆ
+  - type: dropdown
+    id: provider
+    attributes:
+      label: AI ที่ใช้ตอนเกิดปัญหา
+      multiple: true
+      options:
+        - Claude Code
+        - ChatGPT (Codex)
+        - Antigravity
+        - OpenCode
+        - Freebuff
+        - Terminal
+        - ไม่เกี่ยวกับ AI ตัวไหน
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: ภาพหน้าจอหรือข้อความผิดพลาด
+      description: ลากรูปมาวางที่ช่องนี้ได้ ถ้ามีข้อความผิดพลาดให้คัดลอกมาวาง ตรวจก่อนว่าไม่มีข้อมูลส่วนตัว
+  - type: textarea
+    id: log
+    attributes:
+      label: Log (ไม่บังคับ)
+      description: |
+        ไฟล์ `desktop.log` อยู่ที่ Windows: `%USERPROFILE%\.opencode-multi\desktop.log` · Mac: `~/.opencode-multi/desktop.log`
+        คัดลอกเฉพาะช่วงท้ายๆ ที่เกี่ยวข้องมาวาง
+      render: text
