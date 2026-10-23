@@ -119,9 +119,9 @@
   </div>
   <p class="others">
     ไม่อยากติดตั้ง? ใช้ไฟล์ ZIP แบบ portable:
-    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-windows-x64.zip">Windows</a> ·
-    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-arm64.zip">Mac Apple Silicon</a> ·
-    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-x64.zip">Mac Intel</a>
+    <a data-asset="SuperAi-RAKKYXD-windows-x64.zip" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-windows-x64.zip">Windows</a> ·
+    <a data-asset="SuperAi-RAKKYXD-macos-arm64.zip" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-arm64.zip">Mac Apple Silicon</a> ·
+    <a data-asset="SuperAi-RAKKYXD-macos-x64.zip" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-x64.zip">Mac Intel</a>
     <br><a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases">ทุกเวอร์ชันและสิ่งที่เปลี่ยน</a>
   </p>
 
@@ -177,9 +177,11 @@
   var label = document.getElementById("primary-label");
   var hint = document.getElementById("hint");
 
+  var current = "";
   function pick(os, unsure) {
     var c = choices[os];
     if (!c) return;
+    current = os;
     primary.href = c.href;
     label.textContent = LABELS[os];
     Object.keys(choices).forEach(function (k) { choices[k].classList.remove("recommended"); });
@@ -234,21 +236,42 @@
     hint.textContent = "โปรแกรมนี้ใช้บน Windows และ macOS เปิดหน้านี้จากคอมพิวเตอร์ที่จะติดตั้ง";
   }
 
-  // Version, date and real file sizes from the latest release (the page still works if this fails).
+  // Each file comes from the newest release that has it, so a release still waiting for one
+  // platform's build never turns that button into a 404. The static /latest links stay as the
+  // fallback when GitHub's API cannot be reached.
   var sizes = document.querySelectorAll(".size");
   sizes.forEach(function (s) { s.textContent = s.dataset.fallback; });
-  fetch("https://api.github.com/repos/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest")
+  function parts(tag) { return String(tag).replace(/^v/, "").split(/[.-]/).map(function (n) { return parseInt(n, 10) || 0; }); }
+  function newestFirst(a, b) {
+    var x = parts(a.tag_name), y = parts(b.tag_name);
+    for (var i = 0; i < Math.max(x.length, y.length); i++) if ((x[i] || 0) !== (y[i] || 0)) return (y[i] || 0) - (x[i] || 0);
+    return 0;
+  }
+  fetch("https://api.github.com/repos/rakgoorak/SuperAi-RAKKYXD-releases/releases?per_page=30")
     .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-    .then(function (rel) {
-      var byName = {};
-      (rel.assets || []).forEach(function (a) { byName[a.name] = a; });
-      document.querySelectorAll(".choice").forEach(function (c) {
-        var a = byName[c.dataset.asset];
-        if (a) c.querySelector(".size").textContent = Math.round(a.size / 1048576) + " MB";
+    .then(function (list) {
+      var releases = (Array.isArray(list) ? list : []).filter(function (r) { return r && r.tag_name && !r.draft && !r.prerelease; }).sort(newestFirst);
+      if (!releases.length) return;
+      function find(name) {
+        for (var i = 0; i < releases.length; i++)
+          for (var j = 0; j < (releases[i].assets || []).length; j++)
+            if (releases[i].assets[j].name === name) return { release: releases[i], asset: releases[i].assets[j] };
+        return null;
+      }
+      var shown = releases[0];
+      document.querySelectorAll("[data-asset]").forEach(function (el) {
+        var found = find(el.dataset.asset);
+        if (!found) return;
+        el.href = found.asset.browser_download_url;
+        var size = el.querySelector(".size");
+        // An older file says which version it is.
+        if (size) size.textContent = Math.round(found.asset.size / 1048576) + " MB" + (found.release !== releases[0] ? " · v" + String(found.release.tag_name).replace(/^v/, "") : "");
+        if (el.dataset.os && el.dataset.os === current) shown = found.release;
       });
-      var date = rel.published_at ? new Date(rel.published_at).toLocaleDateString("th-TH", { day: "numeric", month: "long", year: "numeric" }) : "";
+      if (current) primary.href = choices[current].href;
+      var date = shown.published_at ? new Date(shown.published_at).toLocaleDateString("th-TH", { day: "numeric", month: "long", year: "numeric" }) : "";
       document.getElementById("meta").textContent =
-        "เวอร์ชัน " + String(rel.tag_name || "").replace(/^v/, "") + (date ? " · " + date : "") + " · ฟรี · ไม่ต้องล็อกอิน";
+        "เวอร์ชัน " + String(shown.tag_name).replace(/^v/, "") + (date ? " · " + date : "") + " · ฟรี · ไม่ต้องล็อกอิน";
     })
     .catch(function () {});
 })();
