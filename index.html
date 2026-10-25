@@ -3,98 +3,384 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ดาวน์โหลด SuperAi &amp; RAKKYXD</title>
-<meta name="description" content="AI ทุกตัวของคุณ ในหน้าต่างเดียว: Claude, ChatGPT (Codex), Antigravity, OpenCode และ Freebuff บน Windows และ macOS">
-<meta property="og:title" content="SuperAi &amp; RAKKYXD">
-<meta property="og:description" content="AI ทุกตัวของคุณ ในหน้าต่างเดียว ดาวน์โหลดฟรีสำหรับ Windows และ macOS">
+<title>SuperAi &amp; RAKKYXD — AI ทุกตัวของคุณ ในหน้าต่างเดียว (ดีไซน์ใหม่ Minimal UI)</title>
+<meta name="description" content="AI ทุกตัวของคุณ ในหน้าต่างเดียว: Claude, ChatGPT (Codex), Antigravity, OpenCode และ Freebuff บน Windows และ macOS พร้อมดีไซน์ใหม่ Minimal UI สบายตา ทำงานได้เร็วกว่าเดิม">
+<meta property="og:title" content="SuperAi &amp; RAKKYXD — AI ทุกตัวของคุณ ในหน้าต่างเดียว">
+<meta property="og:description" content="ดีไซน์ใหม่ Minimal UI สบายตา รวม Claude, ChatGPT (Codex), Antigravity, OpenCode บน Windows และ macOS ดาวน์โหลดฟรี">
 <meta property="og:image" content="https://rakgoorak.github.io/SuperAi-RAKKYXD-releases/images/workspace.png">
 <link rel="icon" href="images/app-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --base: #0c1116;
-    --surface: #10181f;
-    --raised: #152029;
-    --border: #1e2d38;
-    --text: #e6edf3;
-    --dim: #a0afbd;
-    --accent: #74b3fb;
-    --brand-gradient: linear-gradient(105deg, #30f457 0%, #00c2a6 52%, #1a8cff 100%);
-    --on-brand: #04140f;
+    --base: #090d12;
+    --canvas: #0d131a;
+    --surface: #121a24;
+    --raised: #182330;
+    --border: #1f2e3f;
+    --border-light: rgba(255, 255, 255, 0.08);
+    --text: #f0f4f8;
+    --text-muted: #9ab0c5;
+    --dim: #6c8299;
+    --accent: #38bdf8;
+    --accent-hover: #7dd3fc;
+    --teal: #14b8a6;
+    --brand-gradient: linear-gradient(135deg, #2dd4bf 0%, #0ea5e9 55%, #6366f1 100%);
+    --card-glow: radial-gradient(circle at 50% 0%, rgba(14, 165, 233, 0.12), transparent 70%);
+    --on-brand: #02121b;
     color-scheme: dark;
   }
   * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
   body {
     margin: 0;
     background: var(--base);
+    background-image: 
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(14, 165, 233, 0.15), transparent),
+      radial-gradient(ellipse 60% 40% at 85% 60%, rgba(45, 212, 191, 0.06), transparent);
     color: var(--text);
-    font: 16px/1.7 "Noto Sans Thai", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font: 16px/1.65 "Noto Sans Thai", "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
   }
-  a { color: var(--accent); }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 48px 16px 64px; }
-  header { text-align: center; }
-  header img.icon { width: 96px; height: 96px; }
-  h1 { margin: 12px 0 4px; font-size: clamp(28px, 6vw, 40px); line-height: 1.3; }
-  .tagline { margin: 0; font-size: 18px; font-weight: 500; }
-  .sub { margin: 4px 0 0; color: var(--dim); }
+  a { color: var(--accent); text-decoration: none; transition: color 0.15s ease; }
+  a:hover { color: var(--accent-hover); }
+  
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 48px 20px 80px; }
 
-  .primary { margin: 32px auto 0; max-width: 520px; text-align: center; }
+  /* Navbar */
+  .nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: rgba(18, 26, 36, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border-light);
+    border-radius: 16px;
+    margin-bottom: 56px;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-brand img { width: 34px; height: 34px; border-radius: 8px; }
+  .nav-links { display: flex; align-items: center; gap: 20px; font-size: 14px; }
+  .nav-links a { color: var(--text-muted); }
+  .nav-links a:hover { color: var(--text); }
+  .nav-badge {
+    padding: 3px 10px;
+    background: rgba(45, 212, 191, 0.12);
+    color: #5eead4;
+    border: 1px solid rgba(45, 212, 191, 0.25);
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  /* Hero */
+  header { text-align: center; max-width: 840px; margin: 0 auto; }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-size: 13px;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .hero-tag .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2dd4bf;
+    box-shadow: 0 0 10px #2dd4bf;
+  }
+  h1 {
+    margin: 0 0 16px;
+    font-family: "Plus Jakarta Sans", "Noto Sans Thai", sans-serif;
+    font-size: clamp(32px, 6.5vw, 54px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .tagline {
+    margin: 0 auto 12px;
+    font-size: clamp(18px, 3vw, 22px);
+    color: var(--text);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .sub {
+    margin: 0 auto;
+    color: var(--text-muted);
+    font-size: 16px;
+    max-width: 680px;
+  }
+
+  /* Primary Download CTA */
+  .primary { margin: 36px auto 0; max-width: 540px; text-align: center; }
   .btn {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    min-height: 52px; padding: 12px 28px; border-radius: 12px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+    min-height: 56px; padding: 14px 32px; border-radius: 14px;
     font: inherit; font-weight: 700; font-size: 18px; text-decoration: none;
     background: var(--brand-gradient); color: var(--on-brand);
-    box-shadow: 0 6px 24px rgba(0, 194, 166, .25);
+    box-shadow: 0 8px 30px rgba(14, 165, 233, 0.35);
     width: 100%;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
   }
-  .btn:hover { filter: brightness(1.06); }
-  .btn:focus-visible, .choice:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 36px rgba(14, 165, 233, 0.45);
+    filter: brightness(1.05);
+    color: var(--on-brand);
+  }
+  .btn:active { transform: translateY(0); }
   .btn svg { flex: none; }
-  .meta { margin: 10px 0 0; color: var(--dim); font-size: 14px; }
-  .hint { margin: 12px 0 0; color: var(--dim); font-size: 14px; }
+  .meta { margin: 12px 0 0; color: var(--dim); font-size: 14px; }
+  .hint { margin: 12px 0 0; color: #f59e0b; font-size: 14px; background: rgba(245, 158, 11, 0.1); padding: 6px 14px; border-radius: 8px; display: inline-block; }
 
-  .choices { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin-top: 40px; }
+  /* Platform Choice Cards */
+  .choices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 14px;
+    margin-top: 36px;
+  }
   .choice {
-    display: block; padding: 16px 18px; border-radius: 12px; text-decoration: none; color: var(--text);
-    background: var(--surface); border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 18px 20px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
   }
-  .choice:hover { background: var(--raised); }
-  .choice.recommended { border-color: #00c2a6; }
-  .choice b { display: block; font-size: 16px; }
-  .choice > span { display: block; color: var(--dim); font-size: 14px; }
+  .choice:hover {
+    background: var(--raised);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .choice.recommended {
+    border-color: #0ea5e9;
+    box-shadow: 0 4px 20px rgba(14, 165, 233, 0.15);
+  }
+  .choice-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .choice b { font-size: 17px; font-weight: 700; color: var(--text); }
+  .choice > span { color: var(--text-muted); font-size: 14px; }
   .choice .badge {
-    display: inline-block; margin-top: 6px; padding: 0 8px; border-radius: 999px;
-    background: rgba(0, 194, 166, .15); color: #8bd2b2; font-size: 12px;
+    display: inline-block; padding: 2px 8px; border-radius: 999px;
+    background: rgba(14, 165, 233, 0.18); color: #7dd3fc; font-size: 11px; font-weight: 600;
   }
-  .others { margin-top: 12px; text-align: center; font-size: 14px; color: var(--dim); }
+  .others {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+  .others a { color: var(--accent); margin: 0 4px; }
 
-  .shot { margin: 48px 0 0; }
-  .shot img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); }
+  /* Hero App Screenshot */
+  .shot-wrapper {
+    margin: 56px 0 0;
+    position: relative;
+  }
+  .shot-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.2), transparent 70%);
+    filter: blur(40px);
+    z-index: -1;
+  }
+  .shot {
+    margin: 0;
+    padding: 10px;
+    background: rgba(24, 35, 48, 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-light);
+    border-radius: 18px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
+  }
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .shot-caption {
+    text-align: center;
+    font-size: 13px;
+    color: var(--dim);
+    margin-top: 12px;
+  }
 
-  section { margin-top: 48px; }
-  h2 { font-size: 22px; margin: 0 0 12px; }
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
-  .card { padding: 18px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
-  .card h3 { margin: 0 0 6px; font-size: 17px; }
-  .card p, .card ol { margin: 0; color: var(--dim); font-size: 15px; }
-  .card ol { padding-left: 20px; }
-  .note { margin-top: 10px; font-size: 14px; color: var(--dim); }
-  kbd { font: inherit; padding: 0 6px; border-radius: 6px; background: var(--raised); border: 1px solid var(--border); color: var(--text); white-space: nowrap; }
+  /* Feature Grid */
+  section { margin-top: 80px; }
+  .section-header { text-align: center; max-width: 700px; margin: 0 auto 40px; }
+  .section-tag {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  h2 {
+    font-family: "Plus Jakarta Sans", "Noto Sans Thai", sans-serif;
+    font-size: clamp(24px, 4vw, 34px);
+    margin: 0 0 12px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .section-desc { color: var(--text-muted); font-size: 16px; margin: 0; }
 
-  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--dim); font-size: 14px; text-align: center; }
-  footer a { margin: 0 8px; }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 18px;
+  }
+  .feat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  .feat-card:hover {
+    background: var(--raised);
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-2px);
+  }
+  .feat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(14, 165, 233, 0.12);
+    border: 1px solid rgba(14, 165, 233, 0.25);
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-size: 20px;
+  }
+  .feat-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .feat-card p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* Install Steps */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .card {
+    padding: 22px;
+    border-radius: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .card h3 { margin: 0 0 10px; font-size: 18px; color: var(--text); font-weight: 700; }
+  .card ol { margin: 0; padding-left: 20px; color: var(--text-muted); font-size: 15px; line-height: 1.7; }
+  .card p { margin: 0; color: var(--text-muted); font-size: 15px; line-height: 1.6; }
+  .note { margin-top: 14px; font-size: 14px; color: var(--dim); line-height: 1.5; }
+  kbd {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    padding: 2px 7px;
+    border-radius: 6px;
+    background: var(--raised);
+    border: 1px solid var(--border);
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  /* Usage Section */
+  .usage-box {
+    margin-top: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .usage-box img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    border: 1px solid var(--border);
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 80px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    color: var(--dim);
+    font-size: 14px;
+    text-align: center;
+  }
+  .footer-links { margin-bottom: 12px; }
+  .footer-links a { margin: 0 12px; color: var(--text-muted); }
+  .footer-links a:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 24px 16px 48px; }
+    .nav-header { margin-bottom: 36px; padding: 10px 14px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
+  <nav class="nav-header">
+    <a class="nav-brand" href="#">
+      <img src="images/app-icon.png" alt="SuperAi Logo">
+      <span>SuperAi &amp; RAKKYXD</span>
+    </a>
+    <div class="nav-links">
+      <span class="nav-badge">v1.0.28 Minimal UI</span>
+      <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases">Releases</a>
+      <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD">GitHub</a>
+    </div>
+  </nav>
+
   <header>
-    <img class="icon" src="images/app-icon.png" alt="" width="96" height="96">
-    <h1>SuperAi &amp; RAKKYXD</h1>
-    <p class="tagline">AI ทุกตัวของคุณ ในหน้าต่างเดียว</p>
-    <p class="sub">Claude · ChatGPT (Codex) · Antigravity · OpenCode · Freebuff<br>Windows และ macOS · ภาษาไทย · ใช้บัญชี AI ของคุณเอง</p>
+    <div class="hero-tag">
+      <span class="dot"></span>
+      <span>อัปเดตใหม่: Warm Charcoal Minimal Interface</span>
+    </div>
+    <h1>AI ทุกตัวของคุณ ในหน้าต่างเดียว</h1>
+    <p class="tagline">ดีไซน์ใหม่ เรียบหรู สบายตา โฟกัสกับการพัฒนาซอฟต์แวร์ได้อย่างเต็มที่</p>
+    <p class="sub">Claude · ChatGPT (Codex) · Antigravity · OpenCode · Freebuff<br>รองรับ Windows และ macOS · ภาษาไทย · รันบนเครื่องคุณ 100% · ใช้บัญชี AI ของคุณเอง</p>
   </header>
 
   <div class="primary">
@@ -102,74 +388,172 @@
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
       <span id="primary-label">ดาวน์โหลด</span>
     </a>
-    <p class="meta" id="meta">เวอร์ชันล่าสุด · ฟรี · ไม่ต้องล็อกอิน</p>
+    <p class="meta" id="meta">เวอร์ชันล่าสุด v1.0.28 · ฟรี · ไม่ต้องล็อกอิน</p>
     <p class="hint" id="hint" hidden></p>
   </div>
 
   <div class="choices" id="choices">
     <a class="choice" data-os="windows" data-asset="SuperAi-RAKKYXD-Setup.exe" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-Setup.exe">
-      <b>Windows 10/11</b><span>ตัวติดตั้ง (.exe) · <span class="size" data-fallback="≈90 MB"></span></span>
+      <div class="choice-top">
+        <b>Windows 10 / 11</b>
+        <span class="badge">64-bit</span>
+      </div>
+      <span>ตัวติดตั้งอัตโนมัติ (.exe) · <span class="size" data-fallback="≈90 MB"></span></span>
     </a>
     <a class="choice" data-os="mac-arm" data-asset="SuperAi-RAKKYXD-macos-arm64.dmg" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-arm64.dmg">
-      <b>Mac Apple Silicon</b><span>ชิป M1 ขึ้นไป (.dmg) · <span class="size" data-fallback="≈110 MB"></span></span>
+      <div class="choice-top">
+        <b>Mac Apple Silicon</b>
+        <span class="badge">M1–M4</span>
+      </div>
+      <span>ชิป M1 ขึ้นไป (.dmg) · <span class="size" data-fallback="≈110 MB"></span></span>
     </a>
     <a class="choice" data-os="mac-intel" data-asset="SuperAi-RAKKYXD-macos-x64.dmg" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-x64.dmg">
-      <b>Mac Intel</b><span>ชิป Intel (.dmg) · <span class="size" data-fallback="≈115 MB"></span></span>
+      <div class="choice-top">
+        <b>Mac Intel</b>
+        <span class="badge">x64</span>
+      </div>
+      <span>ชิป Intel (.dmg) · <span class="size" data-fallback="≈115 MB"></span></span>
     </a>
   </div>
   <p class="others">
     ไม่อยากติดตั้ง? ใช้ไฟล์ ZIP แบบ portable:
-    <a data-asset="SuperAi-RAKKYXD-windows-x64.zip" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-windows-x64.zip">Windows</a> ·
-    <a data-asset="SuperAi-RAKKYXD-macos-arm64.zip" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-arm64.zip">Mac Apple Silicon</a> ·
-    <a data-asset="SuperAi-RAKKYXD-macos-x64.zip" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-x64.zip">Mac Intel</a>
-    <br><a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases">ทุกเวอร์ชันและสิ่งที่เปลี่ยน</a>
+    <a data-asset="SuperAi-RAKKYXD-windows-x64.zip" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-windows-x64.zip">Windows ZIP</a> ·
+    <a data-asset="SuperAi-RAKKYXD-macos-arm64.zip" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-arm64.zip">Mac Apple Silicon ZIP</a> ·
+    <a data-asset="SuperAi-RAKKYXD-macos-x64.zip" href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-x64.zip">Mac Intel ZIP</a>
+    <br><a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases">ดูประวัติทุกเวอร์ชันและสิ่งที่ปรับปรุง</a>
   </p>
 
-  <figure class="shot">
-    <img src="images/workspace.png" alt="หน้าหลักของ SuperAi & RAKKYXD" loading="lazy">
-  </figure>
+  <div class="shot-wrapper">
+    <figure class="shot">
+      <img src="images/workspace.png" alt="หน้าหลักของ SuperAi & RAKKYXD ในโหมด Minimal UI" loading="lazy">
+    </figure>
+    <div class="shot-caption">✨ โฉมใหม่ Minimal Interface: พื้นหลังโทน Warm Charcoal สะอาดตา ลดความรกรุงรัง และเพิ่มพื้นที่โค้ดสูงสุด</div>
+  </div>
 
   <section>
-    <h2>ติดตั้งใน 1 นาที</h2>
+    <div class="section-header">
+      <span class="section-tag">Features &amp; Highlights</span>
+      <h2>สร้างมาเพื่อการทำงานกับ AI อย่างมีประสิทธิภาพ</h2>
+      <p class="section-desc">รวมทุกฟีเจอร์ที่คุณต้องการไว้ในโปรแกรมเดียว ไม่ต้องเปิดหลายเบราว์เซอร์หรือสลับเทอร์มินัลไปมาอีกต่อไป</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">⚡</div>
+        <h3>สวิตช์ 3 โหมดกะทัดรัด (Compact 3-Icon Switch)</h3>
+        <p>สลับระหว่าง <b>Agent</b> (สั่งงานเป็นทีม), <b>Code</b> (CLI หลายแท็บในหน้าเดียว) และ <b>Chat</b> (ถามคำถามเดียวได้หลายมุมมอง) ได้ทันทีด้วยปุ่มไอคอนที่ประหยัดพื้นที่</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">🛡️</div>
+        <h3>Quick Provider Chat &amp; Safe Mode</h3>
+        <p>เปิดโปรแกรมแล้วเริ่มพิมพ์คุยกับ AI ได้ทันทีโดยไม่ต้องสร้างโฟลเดอร์หรือเตรียมโปรเจกต์ก่อน พร้อมระบบ Safe Read-only ป้องกันไฟล์ในเครื่องถูกแก้ไขโดยไม่ได้ตั้งใจ</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">🔍</div>
+        <h3>Unified History &amp; Full-Text Search</h3>
+        <p>แผงประวัติรวมทุกเซสชันของทุก AI เข้าด้วยกัน ค้นหาข้อความคำสั่งและโค้ดที่เคยคุยได้แบบ Full-Text และกรองตามผู้ให้บริการ AI ได้ในคลิกเดียว</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">👁️</div>
+        <h3>ซ่อนเซสชันโดยไม่ต้องลบ (Session Hide &amp; Restore)</h3>
+        <p>เปิดทำงานหลายหน้าต่างแล้วจอแน่น? พับเก็บเซสชันที่ไม่ใช้งานออกจากหน้าจอหลักได้ทันที โดยประวัติแชตและโปรเซสยังคงทำงานต่อ 100% พร้อมชิปเปิดกลับมาได้ตลอดเวลา</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">🌿</div>
+        <h3>Git Worktrees &amp; Smart Merge ในตัว</h3>
+        <p>สลับ Git Branch จริงได้จากแถบเหนือช่องพิมพ์ พร้อมสร้าง Parallel Worktrees เพื่อให้ AI พัฒนาหลายฟีเจอร์พร้อมกันโดยไฟล์ไม่ชนกัน และรวมโค้ดกลับเข้า main ได้ในคลิกเดียว</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">🔗</div>
+        <h3>Ctrl + Click เปิด URL ทันที (เหมือน Claude App)</h3>
+        <p>พิมพ์หรือวาง URL ในช่องพิมพ์ข้อความหรือกล่องแชท สามารถกด <kbd>Ctrl + Click</kbd> เพื่อเปิดเว็บเบราว์เซอร์ของระบบทันที พร้อมแถบ Quick Link Chips ใต้ช่องพิมพ์</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">🎨</div>
+        <h3>Interactive Artifacts Preview</h3>
+        <p>ดูตัวอย่างผลงานแบบสด: HTML, SVG, Tailwind CSS, ไดอะแกรม Mermaid และทดสอบโค้ด React / JSX / TSX แบบอินเทอร์แอคทีฟบนเครื่องของคุณได้ทันที</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">🎙️</div>
+        <h3>พูดเพื่อพิมพ์ภาษาไทย (Local Whisper)</h3>
+        <p>กดปุ่มไมค์ค้างไว้แล้วพูดภาษาไทย แปลงเสียงด้วยโมเดล Whisper Thonburian บนเครื่องคุณ 100% ปลอดภัย ไร้กังวลเรื่องข้อมูลเสียงรั่วไหล</p>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">📊</div>
+        <h3>ตรวจเช็คโควตาคงเหลือ (Usage Tracker)</h3>
+        <p>ตรวจสอบโควตาที่เหลือของ Claude, Codex, Antigravity แบบเรียลไทม์ ทั้งรอบ 5 ชั่วโมงและรอบสัปดาห์ พร้อมเวลารีเซ็ตที่แม่นยำ</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-tag">Quota Monitor</span>
+      <h2>เช็คโควตา AI ได้ทุกตัวในพริบตา</h2>
+      <p class="section-desc">ไม่ต้องเปิดหลายหน้าเว็บเพื่อดูว่าโควตาการใช้งานของแต่ละเจ้าเหลือเท่าไร</p>
+    </div>
+    <div class="usage-box">
+      <img src="images/usage.png" alt="หน้าต่างตรวจสอบโควตาการใช้งาน SuperAi & RAKKYXD" loading="lazy">
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-tag">Quick Start</span>
+      <h2>ติดตั้งง่ายใน 1 นาที</h2>
+      <p class="section-desc">พร้อมใช้งานทันที ไม่ยุ่งยาก และไม่ต้องใช้สิทธิ์ผู้ดูแลระบบ</p>
+    </div>
     <div class="steps">
       <div class="card">
         <h3>Windows</h3>
         <ol>
-          <li>ดับเบิลคลิก <b>SuperAi-RAKKYXD-Setup.exe</b></li>
-          <li>เลือกโฟลเดอร์ แล้วกด <b>ติดตั้ง</b></li>
+          <li>ดับเบิลคลิกไฟล์ <b>SuperAi-RAKKYXD-Setup.exe</b></li>
+          <li>เลือกโฟลเดอร์ติดตั้ง แล้วกด <b>ติดตั้ง</b></li>
+          <li>รอแถบความคืบหน้ารอบโลโก้หมุนครบก็พร้อมใช้งานทันที</li>
         </ol>
         <p class="note">ถ้าขึ้น “Windows protected your PC” ให้กด <kbd>More info</kbd> แล้ว <kbd>Run anyway</kbd></p>
       </div>
       <div class="card">
         <h3>macOS 11 ขึ้นไป</h3>
         <ol>
-          <li>เปิดไฟล์ <b>.dmg</b></li>
-          <li>ลากแอปไปที่ <b>Applications</b></li>
+          <li>เปิดไฟล์ <b>.dmg</b> ที่ดาวน์โหลดมา</li>
+          <li>ลากไอคอนแอปไปวางที่โฟลเดอร์ <b>Applications</b></li>
+          <li>เปิดโปรแกรมจาก Applications หรือ Launchpad</li>
         </ol>
-        <p class="note">ถ้าเปิดครั้งแรกไม่ได้ ไปที่ System Settings → Privacy &amp; Security แล้วกด <kbd>Open Anyway</kbd></p>
+        <p class="note">ถ้าเปิดครั้งแรกไม่ได้ ให้ไปที่ System Settings → Privacy &amp; Security แล้วกด <kbd>Open Anyway</kbd></p>
       </div>
       <div class="card">
-        <h3>เปิดโปรแกรมครั้งแรก</h3>
-        <p>หน้า <b>เริ่มต้นใช้งาน</b> จะติดตั้ง Node.js, Git และ CLI ของ AI ให้ทีละขั้น แล้วให้คุณเข้าสู่ระบบด้วยบัญชีของตัวเอง ไม่ต้องเตรียมอะไรมาก่อน</p>
+        <h3>เปิดใช้งานครั้งแรก</h3>
+        <p>หน้า <b>เริ่มต้นใช้งาน (Setup Guide)</b> จะตรวจเช็คและติดตั้ง Node.js, Git และ CLI ของ AI ให้ทีละขั้น และให้คุณล็อกอินด้วยบัญชีของคุณเองอย่างปลอดภัย</p>
       </div>
     </div>
-    <p class="note">ไม่รู้ว่า Mac เป็นชิปอะไร? กดโลโก้ Apple มุมซ้ายบนของจอ → <b>About This Mac</b> ถ้าเห็น “Chip: Apple M…” ให้เลือก Apple Silicon ถ้าเห็น “Processor: Intel” ให้เลือก Intel</p>
   </section>
 
   <footer>
-    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases#readme">คู่มือและแก้ปัญหา</a>
-    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/issues/new/choose">แจ้งปัญหา / เสนอความสามารถ</a>
-    <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases">Releases</a>
-    <p>โปรแกรมทำงานบนเครื่องคุณ ไม่มีเซิร์ฟเวอร์ของตัวเอง ค่าใช้จ่ายและโควตาเป็นไปตามบัญชี AI ของคุณ</p>
+    <div class="footer-links">
+      <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases#readme">คู่มือการใช้งาน</a>
+      <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/issues/new/choose">แจ้งปัญหา / เสนอไอเดีย</a>
+      <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases">รายการอัปเดตทั้งหมด</a>
+      <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD">ซอร์สโค้ด GitHub</a>
+    </div>
+    <p>SuperAi &amp; RAKKYXD ทำงานบนเครื่องของคุณทั้งหมด (Local-First) ไม่มีเซิร์ฟเวอร์ดักเก็บข้อมูล ค่าใช้จ่ายและโควตาเป็นไปตามบัญชี AI ของคุณ</p>
   </footer>
 </div>
 
 <script>
 (function () {
   var LABELS = {
-    windows: "ดาวน์โหลดสำหรับ Windows",
-    "mac-arm": "ดาวน์โหลดสำหรับ Mac (Apple Silicon)",
-    "mac-intel": "ดาวน์โหลดสำหรับ Mac (Intel)"
+    windows: "ดาวน์โหลดสำหรับ Windows (Setup.exe)",
+    "mac-arm": "ดาวน์โหลดสำหรับ Mac Apple Silicon (.dmg)",
+    "mac-intel": "ดาวน์โหลดสำหรับ Mac Intel (.dmg)"
   };
   var choices = {};
   document.querySelectorAll(".choice").forEach(function (a) { choices[a.dataset.os] = a; });
@@ -186,11 +570,16 @@
     label.textContent = LABELS[os];
     Object.keys(choices).forEach(function (k) { choices[k].classList.remove("recommended"); });
     c.classList.add("recommended");
-    if (!c.querySelector(".badge")) {
+    if (!c.querySelector(".badge-match")) {
       var b = document.createElement("span");
-      b.className = "badge";
+      b.className = "badge badge-match";
+      b.style.background = "rgba(45, 212, 191, 0.2)";
+      b.style.color = "#5eead4";
+      b.style.marginLeft = "6px";
       b.textContent = "ตรงกับเครื่องนี้";
-      c.appendChild(b);
+      var top = c.querySelector(".choice-top");
+      if (top) top.appendChild(b);
+      else c.appendChild(b);
     }
     if (unsure) {
       hint.hidden = false;
@@ -198,7 +587,6 @@
     }
   }
 
-  // Guess the Mac CPU: Chromium exposes it directly; elsewhere the GPU name ("Apple M1" vs "Intel") is a strong hint.
   function macArch() {
     var uad = navigator.userAgentData;
     if (uad && uad.getHighEntropyValues) {
@@ -230,15 +618,12 @@
       else if (arch === "arm") { hint.hidden = true; }
     });
   } else {
-    label.textContent = "เลือกเครื่องของคุณด้านล่าง";
+    label.textContent = "เลือกแพลตฟอร์มของคุณด้านล่าง";
     primary.href = "#choices";
     hint.hidden = false;
-    hint.textContent = "โปรแกรมนี้ใช้บน Windows และ macOS เปิดหน้านี้จากคอมพิวเตอร์ที่จะติดตั้ง";
+    hint.textContent = "โปรแกรมนี้รองรับ Windows และ macOS เปิดหน้านี้จากคอมพิวเตอร์ที่ต้องการติดตั้ง";
   }
 
-  // Each file comes from the newest release that has it, so a release still waiting for one
-  // platform's build never turns that button into a 404. The static /latest links stay as the
-  // fallback when GitHub's API cannot be reached.
   var sizes = document.querySelectorAll(".size");
   sizes.forEach(function (s) { s.textContent = s.dataset.fallback; });
   function parts(tag) { return String(tag).replace(/^v/, "").split(/[.-]/).map(function (n) { return parseInt(n, 10) || 0; }); }
@@ -264,7 +649,6 @@
         if (!found) return;
         el.href = found.asset.browser_download_url;
         var size = el.querySelector(".size");
-        // An older file says which version it is.
         if (size) size.textContent = Math.round(found.asset.size / 1048576) + " MB" + (found.release !== releases[0] ? " · v" + String(found.release.tag_name).replace(/^v/, "") : "");
         if (el.dataset.os && el.dataset.os === current) shown = found.release;
       });
