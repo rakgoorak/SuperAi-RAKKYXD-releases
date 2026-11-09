@@ -367,7 +367,7 @@
       <span>SuperAi &amp; RAKKYXD</span>
     </a>
     <div class="nav-links">
-      <span class="nav-badge">v1.0.28 Minimal UI</span>
+      <span class="nav-badge" id="nav-badge">v1.0.35 Minimal UI</span>
       <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases">Releases</a>
       <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD">GitHub</a>
     </div>
@@ -376,7 +376,7 @@
   <header>
     <div class="hero-tag">
       <span class="dot"></span>
-      <span>อัปเดตใหม่: Warm Charcoal Minimal Interface</span>
+      <span>อัปเดตใหม่: Warm Charcoal Minimal Interface (v1.0.35)</span>
     </div>
     <h1>AI ทุกตัวของคุณ ในหน้าต่างเดียว</h1>
     <p class="tagline">ดีไซน์ใหม่ เรียบหรู สบายตา โฟกัสกับการพัฒนาซอฟต์แวร์ได้อย่างเต็มที่</p>
@@ -508,6 +508,28 @@
         <div class="feat-icon">🧩</div>
         <h3>Agent Skills Ecosystem &amp; Cloudflare Audit</h3>
         <p>ติดตั้งและจัดการ Skill เพื่อขยายขีดความสามารถของ AI ได้ในคลิกเดียว รองรับคลัง Skill มาตรฐานจาก Anthropic, OpenAI, Vercel (skills.sh) และ Cloudflare Security Audit</p>
+      </div>
+    </div>
+  </section>
+
+    <section>
+    <div class="section-header">
+      <span class="section-tag">Workspaces &amp; Modes</span>
+      <h2>ภาพการทำงานจริงในระบบ</h2>
+      <p class="section-desc">ออกแบบให้ทุกโหมดทำงานร่วมกันได้อย่างลงตัว ทั้งการสั่งงานทีม Agent และการเทียบมุมมองในโหมด Multi-AI Chat</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto;">
+      <div class="shot-wrapper" style="margin: 0;">
+        <figure class="shot">
+          <img src="images/agent.png" alt="หน้าต่างโหมด Agent ใน SuperAi & RAKKYXD" loading="lazy">
+        </figure>
+        <div class="shot-caption">🤖 โหมด Agent: Main Agent ร่วมมือกับ Sub-agents พร้อมบอร์ดแจกจ่ายงาน</div>
+      </div>
+      <div class="shot-wrapper" style="margin: 0;">
+        <figure class="shot">
+          <img src="images/chat.png" alt="หน้าต่างโหมด Multi-AI Chat ใน SuperAi & RAKKYXD" loading="lazy">
+        </figure>
+        <div class="shot-caption">💬 โหมด Chat: ถามครั้งเดียว ได้คำตอบเทียบกันชัดเจน พร้อมบทสรุปรวม</div>
       </div>
     </div>
   </section>
@@ -661,19 +683,21 @@
             if (releases[i].assets[j].name === name) return { release: releases[i], asset: releases[i].assets[j] };
         return null;
       }
-      var shown = releases[0];
+      var latest = releases[0];
+      var navBadge = document.getElementById("nav-badge");
+      if (navBadge) navBadge.textContent = "v" + String(latest.tag_name).replace(/^v/, "") + " Minimal UI";
+
       document.querySelectorAll("[data-asset]").forEach(function (el) {
         var found = find(el.dataset.asset);
         if (!found) return;
         el.href = found.asset.browser_download_url;
         var size = el.querySelector(".size");
-        if (size) size.textContent = Math.round(found.asset.size / 1048576) + " MB" + (found.release !== releases[0] ? " · v" + String(found.release.tag_name).replace(/^v/, "") : "");
-        if (el.dataset.os && el.dataset.os === current) shown = found.release;
+        if (size) size.textContent = Math.round(found.asset.size / 1048576) + " MB" + (found.release !== latest ? " · v" + String(found.release.tag_name).replace(/^v/, "") : "");
       });
       if (current) primary.href = choices[current].href;
-      var date = shown.published_at ? new Date(shown.published_at).toLocaleDateString("th-TH", { day: "numeric", month: "long", year: "numeric" }) : "";
+      var date = latest.published_at ? new Date(latest.published_at).toLocaleDateString("th-TH", { day: "numeric", month: "long", year: "numeric" }) : "";
       document.getElementById("meta").textContent =
-        "เวอร์ชัน " + String(shown.tag_name).replace(/^v/, "") + (date ? " · " + date : "") + " · ฟรี · ไม่ต้องล็อกอิน";
+        "เวอร์ชัน " + String(latest.tag_name).replace(/^v/, "") + (date ? " · " + date : "") + " · ฟรี · ไม่ต้องล็อกอิน";
     })
     .catch(function () {});
 })();
