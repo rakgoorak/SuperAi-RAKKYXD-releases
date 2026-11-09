@@ -77,6 +77,9 @@
 - **Interactive Artifacts:** พรีวิวโค้ดสด (HTML/SVG/Tailwind/Mermaid) และทดสอบโค้ด React/JSX/TSX แบบอินเทอร์แอคทีฟ
 - **Local Whisper Voice Typing:** พูดภาษาไทยเพื่อพิมพ์ข้อความ แปลงเสียงบนเครื่อง 100% เสียงไม่ออกนอกเครื่อง
 - **Usage Tracker:** ตรวจสอบโควตาคงเหลือของ Claude, Codex, Antigravity แบบเรียลไทม์
+- **Cross-Agent Review & Security Audit:** ให้ AI ช่วยรีวิวโค้ดและตรวจหาจุดบกพร่อง/ช่องโหว่ พร้อมการป้องกันความปลอดภัย Local Loopback และ Folder Trust
+- **Self-Healing Test Loop:** วนรอบรันทดสอบและซ่อมแซมโค้ดอัตโนมัติเมื่อเทสต์ล้มเหลว
+- **Curated Skills Catalog:** ติดตั้ง Skill เสริมจาก Anthropic, OpenAI, Vercel (skills.sh) และ Cloudflare ได้ในคลิกเดียว
 
 <p align="center">
   <img src="images/usage.png" alt="หน้าต่าง Usage ตรวจสอบโควตาคงเหลือ" width="860" style="border-radius: 12px; border: 1px solid #1e2d38;" />
