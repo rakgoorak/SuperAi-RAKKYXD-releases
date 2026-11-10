@@ -5,6 +5,12 @@
 <h1 align="center">SuperAi &amp; RAKKYXD</h1>
 
 <p align="center">
+  <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases"><img src="https://img.shields.io/github/downloads/rakgoorak/SuperAi-RAKKYXD-releases/total?color=2563eb&label=Downloads&logo=github" alt="Total Downloads" /></a>
+  <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest"><img src="https://img.shields.io/badge/release-v1.0.35-blueviolet.svg" alt="Latest Release" /></a>
+  <a href="https://rakgoorak.github.io/SuperAi-RAKKYXD-releases/"><img src="https://img.shields.io/badge/website-live-success.svg" alt="Website" /></a>
+</p>
+
+<p align="center">
   <b>AI ทุกตัวของคุณ ในหน้าต่างเดียว — ดีไซน์ใหม่ Minimal เรียบหรู โฟกัสกับงาน (v1.0.35)</b><br />
   Claude · ChatGPT (Codex) · Antigravity · OpenCode · Freebuff<br />
   Windows และ macOS · ภาษาไทย · รันบนเครื่องคุณ 100% · ใช้บัญชี AI ของคุณเอง
@@ -36,6 +42,7 @@
 
 - ลิงก์ด้านบนเป็นเวอร์ชันล่าสุด (**v1.0.35**) เสมอ ไม่ต้องล็อกอิน GitHub
 - หรือเปิด [หน้าเว็บไซต์ดาวน์โหลด](https://rakgoorak.github.io/SuperAi-RAKKYXD-releases/) ที่ตรวจจับระบบปฏิบัติการและแนะนำไฟล์ให้ตรงกับเครื่องของคุณ
+- 📊 ตรวจสอบสถิติและยอดดาวน์โหลดสดแบบละเอียดได้ที่ [GitHub Releases Stats (Grev)](https://hanadigital.github.io/grev/?user=rakgoorak&repo=SuperAi-RAKKYXD-releases)
 - ดูทุกเวอร์ชันและสิ่งที่เปลี่ยนในแต่ละรุ่นได้ที่ [Releases](https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases)
 - ไม่อยากติดตั้ง? ใช้ไฟล์ ZIP (Portable) ในหน้า Releases: แตกโฟลเดอร์แล้วเปิดใช้งานได้ทันที
 

@@ -368,6 +368,7 @@
     </a>
     <div class="nav-links">
       <span class="nav-badge" id="nav-badge">v1.0.35 Minimal UI</span>
+      <span class="nav-downloads" id="nav-downloads" style="font-size: 12.5px; color: #94a3b8; display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 999px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> <span id="nav-dl-text">200+ ดาวน์โหลด</span></span>
       <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases">Releases</a>
       <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD">GitHub</a>
     </div>
@@ -389,6 +390,10 @@
       <span id="primary-label">ดาวน์โหลด</span>
     </a>
     <p class="meta" id="meta">เวอร์ชันล่าสุด v1.0.35 · ฟรี · ไม่ต้องล็อกอิน</p>
+    <div id="download-pill" class="download-pill" style="display:inline-flex; align-items:center; gap:8px; margin-top:10px; padding:6px 16px; background:rgba(45, 212, 191, 0.08); border:1px solid rgba(45, 212, 191, 0.25); border-radius:999px; font-size:13px; color:#5eead4; font-weight:500;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+      <span>มีผู้ดาวน์โหลดใช้งานแล้วกว่า <strong id="dl-count-text">200+</strong> ครั้ง</span>
+    </div>
     <p class="hint" id="hint" hidden></p>
   </div>
 
@@ -695,9 +700,27 @@
         if (size) size.textContent = Math.round(found.asset.size / 1048576) + " MB" + (found.release !== latest ? " · v" + String(found.release.tag_name).replace(/^v/, "") : "");
       });
       if (current) primary.href = choices[current].href;
+      var totalDownloads = 0;
+      releases.forEach(function (rel) {
+        (rel.assets || []).forEach(function (asset) {
+          if (!asset.name.endsWith(".sha256")) {
+            totalDownloads += (asset.download_count || 0);
+          }
+        });
+      });
+
+      var dlText = document.getElementById("dl-count-text");
+      if (dlText && totalDownloads > 0) {
+        dlText.textContent = totalDownloads.toLocaleString();
+      }
+      var navDlText = document.getElementById("nav-dl-text");
+      if (navDlText && totalDownloads > 0) {
+        navDlText.textContent = totalDownloads.toLocaleString() + " ดาวน์โหลด";
+      }
+
       var date = latest.published_at ? new Date(latest.published_at).toLocaleDateString("th-TH", { day: "numeric", month: "long", year: "numeric" }) : "";
       document.getElementById("meta").textContent =
-        "เวอร์ชัน " + String(latest.tag_name).replace(/^v/, "") + (date ? " · " + date : "") + " · ฟรี · ไม่ต้องล็อกอิน";
+        "เวอร์ชัน " + String(latest.tag_name).replace(/^v/, "") + (date ? " · " + date : "") + (totalDownloads > 0 ? " · ดาวน์โหลดแล้วกว่า " + totalDownloads.toLocaleString() + " ครั้ง" : "") + " · ฟรี · ไม่ต้องล็อกอิน";
     })
     .catch(function () {});
 })();
