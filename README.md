@@ -6,14 +6,18 @@
 
 <p align="center">
   <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases"><img src="https://img.shields.io/github/downloads/rakgoorak/SuperAi-RAKKYXD-releases/total?color=2563eb&label=Downloads&logo=github" alt="Total Downloads" /></a>
-  <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest"><img src="https://img.shields.io/badge/release-v1.0.35-blueviolet.svg" alt="Latest Release" /></a>
+  <a href="https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest"><img src="https://img.shields.io/badge/release-v1.0.36-blueviolet.svg" alt="Latest Release" /></a>
   <a href="https://rakgoorak.github.io/SuperAi-RAKKYXD-releases/"><img src="https://img.shields.io/badge/website-live-success.svg" alt="Website" /></a>
 </p>
 
 <p align="center">
-  <b>AI ทุกตัวของคุณ ในหน้าต่างเดียว — ดีไซน์ใหม่ Minimal เรียบหรู โฟกัสกับงาน (v1.0.35)</b><br />
-  Claude · ChatGPT (Codex) · Antigravity · OpenCode · Freebuff<br />
-  Windows และ macOS · ภาษาไทย · รันบนเครื่องคุณ 100% · ใช้บัญชี AI ของคุณเอง
+  <b>🇹🇭 ภาษาไทย</b> &nbsp;|&nbsp; <a href="README_EN.md">🇬🇧 English</a> &nbsp;|&nbsp; 🇯🇵 日本語 &nbsp;|&nbsp; 🇨🇳 简体中文
+</p>
+
+<p align="center">
+  <b>AI ทุกตัวของคุณ ในหน้าต่างเดียว — ดีไซน์ใหม่ Minimal เรียบหรู โฟกัสกับงาน (v1.0.36)</b><br />
+  Claude · ChatGPT (Codex) · Antigravity · OpenCode · Freebuff · Ollama<br />
+  Windows และ macOS · รองรับหลายภาษา (ไทย, อังกฤษ, ญี่ปุ่น, จีน) · รันบนเครื่องคุณ 100% · ใช้บัญชี AI ของคุณเอง
 </p>
 
 <p align="center">
@@ -40,11 +44,18 @@
 | **Mac Apple Silicon (M1 ขึ้นไป)** | [SuperAi-RAKKYXD-macos-arm64.dmg](https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-arm64.dmg) | ≈110 MB | Drag & Drop DMG |
 | **Mac Intel** | [SuperAi-RAKKYXD-macos-x64.dmg](https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest/download/SuperAi-RAKKYXD-macos-x64.dmg) | ≈115 MB | Drag & Drop DMG |
 
-- ลิงก์ด้านบนเป็นเวอร์ชันล่าสุด (**v1.0.35**) เสมอ ไม่ต้องล็อกอิน GitHub
+- ลิงก์ด้านบนเป็นเวอร์ชันล่าสุด (**v1.0.36**) เสมอ ไม่ต้องล็อกอิน GitHub
 - หรือเปิด [หน้าเว็บไซต์ดาวน์โหลด](https://rakgoorak.github.io/SuperAi-RAKKYXD-releases/) ที่ตรวจจับระบบปฏิบัติการและแนะนำไฟล์ให้ตรงกับเครื่องของคุณ
 - 📊 ตรวจสอบสถิติและยอดดาวน์โหลดสดแบบละเอียดได้ที่ [GitHub Releases Stats (Grev)](https://hanadigital.github.io/grev/?user=rakgoorak&repo=SuperAi-RAKKYXD-releases)
 - ดูทุกเวอร์ชันและสิ่งที่เปลี่ยนในแต่ละรุ่นได้ที่ [Releases](https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases)
 - ไม่อยากติดตั้ง? ใช้ไฟล์ ZIP (Portable) ในหน้า Releases: แตกโฟลเดอร์แล้วเปิดใช้งานได้ทันที
+
+---
+
+## ไฮไลต์ฟีเจอร์เด่นใน v1.0.36
+- **🌐 รองรับหลายภาษา (Multi-language Support)**: สลับภาษาไทย, อังกฤษ, ญี่ปุ่น และจีนได้ทันทีในหน้า Settings
+- **🛡️ Live Community Downloads Counter**: แสดงยอดดาวน์โหลดสดจาก GitHub ทั่วโลก
+- **🤖 Minimal UI & Multi-Agent Collaboration**: ดีไซน์ใหม่ Warm Charcoal เรียบหรู โฟกัสกับงาน
 
 ---
 
