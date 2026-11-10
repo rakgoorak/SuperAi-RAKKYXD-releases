@@ -677,7 +677,37 @@
     for (var i = 0; i < Math.max(x.length, y.length); i++) if ((x[i] || 0) !== (y[i] || 0)) return (y[i] || 0) - (x[i] || 0);
     return 0;
   }
-  fetch("https://api.github.com/repos/rakgoorak/SuperAi-RAKKYXD-releases/releases?per_page=30")
+  // Download counter. GitHub's own download_count lags by a few minutes, so a download started on
+  // this page is added at once and dropped again when GitHub's number has caught up.
+  var KEY = "superai-dl-pending", apiTotal = 0, metaPrefix = "", lastLoad = 0, pend = null;
+  try { pend = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+  function shownTotal() {
+    if (pend && (Date.now() - pend.at > 3600000 || pend.base + pend.n <= apiTotal)) {
+      pend = null;
+      try { localStorage.removeItem(KEY); } catch (e) {}
+    }
+    return pend ? pend.base + pend.n : apiTotal;
+  }
+  function showDownloads() {
+    var total = shownTotal(), text = total.toLocaleString();
+    var dlText = document.getElementById("dl-count-text");
+    if (dlText && total > 0) dlText.textContent = text;
+    var navDlText = document.getElementById("nav-dl-text");
+    if (navDlText && total > 0) navDlText.textContent = text + " ดาวน์โหลด";
+    if (metaPrefix) document.getElementById("meta").textContent =
+      metaPrefix + (total > 0 ? " · ดาวน์โหลดแล้วกว่า " + text + " ครั้ง" : "") + " · ฟรี · ไม่ต้องล็อกอิน";
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href*='/download/']") : null;
+    if (!a || !apiTotal) return;
+    pend = { base: pend ? pend.base : apiTotal, n: (pend ? pend.n : 0) + 1, at: Date.now() };
+    try { localStorage.setItem(KEY, JSON.stringify(pend)); } catch (err) {}
+    showDownloads();
+  });
+  function load() {
+  lastLoad = Date.now();
+  // 100 is the API's page limit; 30 left the oldest releases out of the total.
+  return fetch("https://api.github.com/repos/rakgoorak/SuperAi-RAKKYXD-releases/releases?per_page=100")
     .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
     .then(function (list) {
       var releases = (Array.isArray(list) ? list : []).filter(function (r) { return r && r.tag_name && !r.draft && !r.prerelease; }).sort(newestFirst);
@@ -703,26 +733,21 @@
       var totalDownloads = 0;
       releases.forEach(function (rel) {
         (rel.assets || []).forEach(function (asset) {
-          if (!asset.name.endsWith(".sha256")) {
-            totalDownloads += (asset.download_count || 0);
-          }
+          if (!asset.name.endsWith(".sha256")) totalDownloads += (asset.download_count || 0);
         });
       });
-
-      var dlText = document.getElementById("dl-count-text");
-      if (dlText && totalDownloads > 0) {
-        dlText.textContent = totalDownloads.toLocaleString();
-      }
-      var navDlText = document.getElementById("nav-dl-text");
-      if (navDlText && totalDownloads > 0) {
-        navDlText.textContent = totalDownloads.toLocaleString() + " ดาวน์โหลด";
-      }
-
+      apiTotal = totalDownloads;
       var date = latest.published_at ? new Date(latest.published_at).toLocaleDateString("th-TH", { day: "numeric", month: "long", year: "numeric" }) : "";
-      document.getElementById("meta").textContent =
-        "เวอร์ชัน " + String(latest.tag_name).replace(/^v/, "") + (date ? " · " + date : "") + (totalDownloads > 0 ? " · ดาวน์โหลดแล้วกว่า " + totalDownloads.toLocaleString() + " ครั้ง" : "") + " · ฟรี · ไม่ต้องล็อกอิน";
+      metaPrefix = "เวอร์ชัน " + String(latest.tag_name).replace(/^v/, "") + (date ? " · " + date : "");
+      showDownloads();
     })
     .catch(function () {});
+  }
+  load();
+  // Coming back to the tab (e.g. after the download finished) picks up GitHub's newer number.
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden && Date.now() - lastLoad > 60000) load();
+  });
 })();
 </script>
 </body>
