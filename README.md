@@ -24,6 +24,8 @@ This repository only hosts the installers. The app checks it for updates, so it 
 
 Portable ZIP files and a `.sha256` checksum for every file are on the [latest release](https://github.com/rakgoorak/SuperAi-RAKKYXD-releases/releases/latest).
 
+[Code signing policy](https://github.com/rakgoorak/SuperAi-RAKKYXD/blob/main/CODE_SIGNING_POLICY.md) · [Privacy](https://github.com/rakgoorak/SuperAi-RAKKYXD/blob/main/PRIVACY.md)
+
 ---
 
 ที่นี่เก็บเฉพาะไฟล์ติดตั้ง และเป็นที่ที่แอปใช้ตรวจหาอัปเดต ซอร์สโค้ด การแจ้งปัญหา และเว็บไซต์ย้ายไปที่ [rakgoorak/SuperAi-RAKKYXD](https://github.com/rakgoorak/SuperAi-RAKKYXD) และ [หน้าเว็บภาษาไทย](https://rakgoorak.github.io/SuperAi-RAKKYXD/th.html)
