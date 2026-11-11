@@ -1,8 +1,11 @@
 blank_issues_enabled: false
 contact_links:
-  - name: ดาวน์โหลดเวอร์ชันล่าสุด
-    url: https://rakgoorak.github.io/SuperAi-RAKKYXD-releases/
-    about: หน้าดาวน์โหลดที่เลือกไฟล์ให้ตรงกับเครื่องของคุณ
-  - name: วิธีติดตั้งและแก้ปัญหาที่พบบ่อย
-    url: https://github.com/rakgoorak/SuperAi-RAKKYXD-releases#แก้ปัญหาที่พบบ่อย
-    about: อ่านก่อนแจ้งปัญหา อาจมีวิธีแก้อยู่แล้ว
+  - name: Report a bug or request a feature (main repository)
+    url: https://github.com/rakgoorak/SuperAi-RAKKYXD/issues/new/choose
+    about: Issues are tracked with the source code. แจ้งปัญหาหรือขอฟีเจอร์ได้ที่ repo หลัก
+  - name: Ask a question (Discussions)
+    url: https://github.com/rakgoorak/SuperAi-RAKKYXD/discussions
+    about: Questions and ideas. ถามคำถามและแลกเปลี่ยนไอเดีย
+  - name: Website and install guide
+    url: https://rakgoorak.github.io/SuperAi-RAKKYXD/
+    about: Download the right file for your computer. หน้าดาวน์โหลดและวิธีติดตั้ง
